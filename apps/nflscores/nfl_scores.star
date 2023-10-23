@@ -62,7 +62,8 @@ ALT_COLOR = """
 ALT_LOGO = """
 {
     "AFC": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/afc.png",
-    "NFC": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nfc.png"
+    "NFC": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nfc.png",
+    "IND": "https://i.ibb.co/jzMc7SB/colts.png"
 }
 """
 MAGNIFY_LOGO = """
@@ -975,6 +976,7 @@ def get_cachable_data(url, ttl_seconds = CACHE_TTL_SECONDS):
     if res.status_code != 200:
         fail("request to %s failed with status code: %d - %s" % (url, res.status_code, res.body()))
 
+    # TODO: Determine if this cache call can be converted to the new HTTP cache.
     cache.set(key, base64.encode(res.body()), ttl_seconds = ttl_seconds)
 
     return res.body()
